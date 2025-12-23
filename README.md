@@ -123,11 +123,6 @@ pip install -r requirements.txt
 python model_comparison.py --video your_video.mp4
 ```
 
-**Verify Output Video**:
-```bash
-python verify_video.py
-```
-
 ### Configuration
 
 You can modify detection parameters in `run_detection.py`:
@@ -147,22 +142,13 @@ plate_info = plate_detector.process_vehicle(frame, vehicle['bbox'], conf_thresho
 ```
 parking-management-system-using-CV/
 │
-├── 📄 README.md                          # Project documentation (you are here)
-├── 📄 LICENSE                            # MIT License
-├── 📄 CONTRIBUTING.md                    # Contribution guidelines
+├── 📄 README.md                          # Project documentation
 ├── 📄 requirements.txt                   # Python dependencies
 │
 ├── 🎬 output_detection.mp4              # Demo video output
 │
 ├── 🐍 run_detection.py                   # Main execution script
 ├── 🐍 model_comparison.py                # Model evaluation tool
-├── 🐍 verify_video.py                     # Video verification utility
-│
-├── 📁 docs/                              # Detailed documentation
-│   ├── README.md                         # Documentation index
-│   ├── PROJECT_EXPLANATION.md            # Complete technical explanation
-│   ├── QUICK_REFERENCE.md                # Quick reference guide
-│   └── ...                               # Additional documentation
 │
 └── 📦 vehicle_detection/                 # Core detection modules
     ├── __init__.py
@@ -176,7 +162,6 @@ parking-management-system-using-CV/
         └── license_plate_detector.py     # CV-based plate detector
 ```
 
-> 💡 **Note**: For detailed technical documentation, see the [docs/](docs/) folder.
 
 ### Key Files Explained
 
@@ -186,7 +171,6 @@ parking-management-system-using-CV/
 | `vehicle_detector.py` | Implements YOLO11-based vehicle detection with configurable model sizes |
 | `license_plate_detector.py` | Multi-method CV approach for license plate detection with strict validation |
 | `model_comparison.py` | Tool for comparing different YOLO model variants (YOLOv5, YOLOv8, YOLO11) |
-| `verify_video.py` | Utility to verify and preview the generated output video |
 
 ---
 
@@ -249,16 +233,6 @@ This project was developed as part of a **5th-semester Computer Vision course**,
 - Software engineering best practices
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
