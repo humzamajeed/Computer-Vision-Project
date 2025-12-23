@@ -85,13 +85,15 @@ def create_gif_from_video(video_path, output_path, max_frames=150, fps=10, scale
     print(f"   FPS: {fps}")
     print(f"   This may take a minute...")
     
-    # Save as GIF
+    # Save as GIF with slower frame duration
+    # Use longer duration per frame for slower playback
+    frame_duration = 0.8  # 0.8 seconds per frame (very slow)
     imageio.mimsave(
         output_path,
         frames,
         fps=fps,
         loop=0,  # Infinite loop
-        duration=1.0/fps
+        duration=frame_duration  # Fixed duration per frame for consistent slow playback
     )
     
     file_size = Path(output_path).stat().st_size / (1024 * 1024)  # MB
@@ -111,6 +113,6 @@ if __name__ == '__main__':
         print("Please run 'python run_detection.py' first to generate the video.")
     else:
         # Create GIF with optimized settings for GitHub (under 10MB limit)
-        # Very slow playback: 70 frames, fps=2 (very slow), scale=0.33 (640x360) should create ~8-9MB GIF
-        create_gif_from_video(video_file, output_file, max_frames=70, fps=2, scale=0.33)
+        # Very slow playback: 70 frames, fps=1, duration=0.8s per frame (very slow), scale=0.33 (640x360)
+        create_gif_from_video(video_file, output_file, max_frames=70, fps=1, scale=0.33)
 
