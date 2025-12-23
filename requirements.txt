@@ -9,3 +9,7 @@ torchvision>=0.15.0
 
 # Data Analysis
 pandas>=2.0.0
+
+# GIF Creation
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9

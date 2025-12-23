@@ -54,6 +54,7 @@ debug_plates/
 *.png
 *.jpeg
 !README_images/
+!demo.gif  # Keep demo GIF for README
 
 # Results and logs
 results/

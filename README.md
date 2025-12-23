@@ -27,9 +27,7 @@ This project implements an intelligent parking management system that leverages 
 
 **Watch the system in action: Real-time vehicle and license plate detection on parking garage footage**
 
-[![Demo Video - Click to Watch](https://img.youtube.com/vi/wybQiVhP8gE/maxresdefault.jpg)](https://youtu.be/wybQiVhP8gE)
-
-**[▶️ Click here to watch on YouTube](https://youtu.be/wybQiVhP8gE)**
+![Demo GIF](demo.gif)
 
 </div>
 
