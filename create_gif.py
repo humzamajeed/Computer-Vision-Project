@@ -111,6 +111,6 @@ if __name__ == '__main__':
         print("Please run 'python run_detection.py' first to generate the video.")
     else:
         # Create GIF with optimized settings for GitHub (under 10MB limit)
-        # Slower playback: 70 frames, fps=4 (slower), scale=0.33 (640x360) should create ~8-9MB GIF
-        create_gif_from_video(video_file, output_file, max_frames=70, fps=4, scale=0.33)
+        # Very slow playback: 70 frames, fps=2 (very slow), scale=0.33 (640x360) should create ~8-9MB GIF
+        create_gif_from_video(video_file, output_file, max_frames=70, fps=2, scale=0.33)
 
