@@ -27,10 +27,19 @@ This project implements an intelligent parking management system that leverages 
 
 **Watch the system in action: Real-time vehicle and license plate detection on parking garage footage**
 
+[![Demo Video](https://img.shields.io/badge/▶️-Watch%20Demo%20Video-red?style=for-the-badge)](https://github.com/humzamajeed/Computer-Vision-Project/raw/main/output_detection.mp4)
+
+**Or click here to view:** [output_detection.mp4](https://github.com/humzamajeed/Computer-Vision-Project/raw/main/output_detection.mp4)
+
+<details>
+<summary>📹 Click to view video inline (if supported by your browser)</summary>
+
 <video width="800" controls>
-  <source src="output_detection.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  <source src="https://github.com/humzamajeed/Computer-Vision-Project/raw/main/output_detection.mp4" type="video/mp4">
+  Your browser does not support the video tag. [Download the video instead](https://github.com/humzamajeed/Computer-Vision-Project/raw/main/output_detection.mp4)
 </video>
+
+</details>
 
 </div>
 
