@@ -25,6 +25,8 @@ This project implements an intelligent parking management system that leverages 
 
 <div align="center">
 
+**Watch the system in action: Real-time vehicle and license plate detection on parking garage footage**
+
 <video width="800" controls>
   <source src="output_detection.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -32,10 +34,15 @@ This project implements an intelligent parking management system that leverages 
 
 </div>
 
-**What the demo shows:**
-- 🟢 **Green bounding boxes**: Detected vehicles with class labels and confidence scores (e.g., `car: 0.89`)
-- 🔵 **Blue bounding boxes**: Detected license plates with confidence scores (e.g., `Plate: 0.85`)
-- 📊 **Real-time statistics**: Frame counter and detection metrics overlay
+**Demo Description:**
+
+This video demonstrates the system processing a parking garage security camera feed. The detection pipeline works in two stages:
+
+1. **Vehicle Detection** (🟢 Green boxes): The YOLO11 neural network identifies vehicles in real-time, displaying the vehicle type (car, truck, bus, motorcycle) and detection confidence score.
+
+2. **License Plate Detection** (🔵 Blue boxes): For each detected vehicle, advanced computer vision algorithms locate the license plate using multiple detection methods (MSER, adaptive thresholding, Canny edge detection) with strict validation to avoid false positives.
+
+The overlay shows real-time statistics including frame count and detection metrics, demonstrating the system's ability to process video streams efficiently while maintaining high accuracy.
 
 ---
 
