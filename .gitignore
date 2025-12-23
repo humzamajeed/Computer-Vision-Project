@@ -44,7 +44,6 @@ ENV/
 *.avi
 *.mov
 *.mkv
-!output_detection.mp4  # Keep output video for demo
 # Exclude input video files (too large for git)
 Car in parking Garage - Parking garage security camera system.mp4
 
@@ -55,6 +54,11 @@ debug_plates/
 *.jpeg
 !README_images/
 !demo.gif  # Keep demo GIF for README
+
+# Utility scripts (not core functionality)
+create_gif.py
+create_documentation.py
+*.docx
 
 # Results and logs
 results/
