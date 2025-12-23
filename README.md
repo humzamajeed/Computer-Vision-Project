@@ -1,117 +1,285 @@
+# 🚗 Intelligent Parking Management System
 
+<div align="center">
 
-# 🚗🅿️ Parking Management System Using Computer Vision
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-green.svg)
+![YOLO](https://img.shields.io/badge/YOLO-11-orange.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Project Structure](#project-structure)
-7. [Streamlit Dashboard](#streamlit-dashboard)
-8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact](#contact)
+**A Computer Vision-powered system for automated vehicle and license plate detection in parking environments**
 
-## Introduction
-The Parking Management System Using Computer Vision is designed to automate parking spot detection and billing with advanced computer vision techniques. It streamlines parking management, minimizes human error, and enhances the efficiency of parking facilities by integrating real-time vehicle number plate recognition, automated billing, and accurate data management.
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Demo](#-demo-video) • [Project Structure](#-project-structure)
 
-## Features
-- **Automated Number Plate Recognition (ANPR)**: Uses Optical Character Recognition (OCR) to detect and read vehicle number plates.
-- **Real-time Tracking**: Monitors and logs vehicle entry and exit times.
-- **Database Integration**: Manages and stores parking data in a MySQL database.
-- **Cost Calculation**: Computes parking fees based on the duration of stay, reducing human interaction by 90% and expediting the billing process by 50%.
-- **User-Friendly Interface**: Provides a real-time video feed and displays processing steps via a Streamlit dashboard.
+</div>
 
-## Technologies Used
-- **Programming Languages**: Python
-- **Computer Vision Libraries**: OpenCV, cv2, cvzone
-- **OCR Library**: pytesseract
-- **Database**: MySQL
-- **Others**: NumPy, Pillow, re
-- **Dashboard**: Streamlit
+---
 
-## Installation
-Follow these steps to set up the Parking Management System on your local machine.
+## 📝 Summary
+
+This project implements an intelligent parking management system that leverages state-of-the-art deep learning and computer vision techniques to automatically detect vehicles and their license plates in video footage. The system uses YOLO11 neural networks for robust vehicle detection and advanced CV algorithms for precise license plate localization, making it ideal for automated parking monitoring, security systems, and traffic analysis applications.
+
+---
+
+## 🎥 Demo Video
+
+<div align="center">
+
+<video width="800" controls>
+  <source src="output_detection.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</div>
+
+**What the demo shows:**
+- 🟢 **Green bounding boxes**: Detected vehicles with class labels and confidence scores (e.g., `car: 0.89`)
+- 🔵 **Blue bounding boxes**: Detected license plates with confidence scores (e.g., `Plate: 0.85`)
+- 📊 **Real-time statistics**: Frame counter and detection metrics overlay
+
+---
+
+## ✨ Features
+
+- **🚗 Vehicle Detection**: State-of-the-art YOLO11 neural network for detecting cars, trucks, buses, and motorcycles
+- **🔍 License Plate Detection**: Multi-method computer vision approach using MSER, adaptive thresholding, and Canny edge detection
+- **🎯 High Accuracy**: Advanced validation filters to minimize false positives (e.g., distinguishing plates from car windows)
+- **⚡ Real-time Processing**: Optimized for real-time video analysis with configurable performance settings
+- **📹 Video I/O**: Automatic video processing with output generation for analysis and demonstration
+- **🔧 Modular Architecture**: Clean, extensible codebase with separate modules for vehicle and plate detection
+
+---
+
+## 🛠️ Technologies Used
+
+### Core Technologies
+- **Python 3.8+** - Programming language
+- **OpenCV (cv2)** - Computer vision operations, video I/O, and image processing
+- **NumPy** - Numerical computations and array operations
+
+### Deep Learning
+- **Ultralytics YOLO11** - State-of-the-art object detection model for vehicle recognition
+- **PyTorch** - Deep learning framework for neural network inference
+- **TorchVision** - Computer vision utilities
+
+### Computer Vision Techniques
+- **MSER (Maximally Stable Extremal Regions)** - Text region detection
+- **Adaptive Thresholding** - Multi-variant thresholding (Gaussian, Mean, Otsu)
+- **Canny Edge Detection** - Edge-based feature extraction
+- **Morphological Operations** - Image processing for text region enhancement
+
+### Additional Tools
+- **Pandas** - Data analysis and model comparison results
+- **Pathlib** - Modern file path handling
+
+---
+
+## 📦 Installation
 
 ### Prerequisites
-- Python 3.12 or higher
-- MySQL
-- Preferred IDE (e.g., IntelliJ IDEA)
-- Streamlit
+- Python 3.8 or higher
+- pip package manager
 
-### Clone the Repository
+### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/jangirsamarth/parking-management-system-using-CV.git
+git clone https://github.com/yourusername/parking-management-system-using-CV.git
 cd parking-management-system-using-CV
 ```
 
-### Install Dependencies
+### Step 2: Install Dependencies
 ```bash
 pip install -r requirements.txt
-pip install streamlit
 ```
 
-## Project Structure
-Organize the project into the following folders:
-
-- **parking_space_detector**: Contains scripts for parking space detection.
-  - `main.py`: Main script for parking space detection.
-  - `parking_space_detector_2.py`: Helper script for configuring parking spaces.
-- **billing_system**: Contains scripts for number plate detection and fee calculation.
-  - `entry_detector.py`: Detects vehicle entry and logs data.
-  - `exit_detector.py`: Detects vehicle exit and calculates parking fees.
-- **dashboard**: Contains the Streamlit dashboard for visualizing parking data.
-  - `dashboard.py`: Displays vehicle data, parking duration, and costs in real-time.
-
-Ensure `pytesseract` is installed in the same directory as `entry_detector.py` and `exit_detector.py`.
-
-### Configure the Database
-- Set up MySQL and update the password in `entry_detector.py` and `exit_detector.py`.
-- Import SQL files into MySQL Workbench and create a database named `smps`.
-
-## Usage
-
-### Video Feed Setup
-- Provide a video feed to `main.py` and capture an appropriate screenshot for use in `parking_space_detector_2.py`.
-
-### Run the Parking Space Detector
-- Execute `parking_space_detector_2.py` to create and configure parking spot windows.
-- Adjust box dimensions through trial and error to ensure accurate detection.
-
-### Run the Main Script
-- Input the exact dimensions of the boxes in `main.py` to match those configured in `parking_space_detector_2.py`.
-- Run `main.py` to test and evaluate parking space detection.
-
-### Database Connection
-- Ensure the database is connected using the MySQL connector.
-
-### Run Entry and Exit Detectors
-- Execute `entry_detector.py` to detect vehicle entries.
-- Execute `exit_detector.py` to handle vehicle exits and calculate fees.
-
-### Streamlit Dashboard
-- To launch the Streamlit dashboard, run:
-  ```bash
-  streamlit run dashboard/dashboard.py
-  ```
-- The dashboard will display real-time data including vehicle details, parking duration, and cost, providing a comprehensive view of parking management.
-
-## Contributing
-Contributions to enhance the Parking Management System are welcome. To contribute:
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Make changes and commit them.
-4. Push changes to your fork.
-5. Create a pull request to the main repository.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contact
-For questions or collaboration:
-- Email: [samarth8947@gmail.com](mailto:samarth8947@gmail.com)
-- LinkedIn: [Samarth Jangir](https://www.linkedin.com/in/samarth-jangir)
+**Note**: The YOLO models will be automatically downloaded on first run (approximately 6MB for YOLO11 Nano).
 
 ---
+
+## 🚀 Usage
+
+### Basic Usage
+
+1. **Prepare your video file** (optional - default video will be used if available):
+   - Place your video file in the project root directory
+   - Update the `video_file` variable in `run_detection.py` if using a custom video
+
+2. **Run the detection script**:
+   ```bash
+   python run_detection.py
+   ```
+
+3. **Controls during execution**:
+   - Press `q` to quit
+   - Press `p` to pause/resume processing
+
+4. **Output**:
+   - Processed video saved as `output_detection.mp4`
+   - Real-time display window with detection results
+
+### Advanced Usage
+
+**Model Comparison Tool**:
+```bash
+python model_comparison.py --video your_video.mp4
+```
+
+**Verify Output Video**:
+```bash
+python verify_video.py
+```
+
+### Configuration
+
+You can modify detection parameters in `run_detection.py`:
+
+```python
+# Vehicle detection confidence threshold (0.0 - 1.0)
+vehicles = vehicle_detector.detect_vehicles(frame, conf_threshold=0.25, imgsz=416)
+
+# License plate detection confidence threshold
+plate_info = plate_detector.process_vehicle(frame, vehicle['bbox'], conf_threshold=0.25)
+```
+
+---
+
+## 📁 Project Structure
+
+```
+parking-management-system-using-CV/
+│
+├── 📄 README.md                          # Project documentation (you are here)
+├── 📄 LICENSE                            # MIT License
+├── 📄 CONTRIBUTING.md                    # Contribution guidelines
+├── 📄 requirements.txt                   # Python dependencies
+│
+├── 🎬 output_detection.mp4              # Demo video output
+│
+├── 🐍 run_detection.py                   # Main execution script
+├── 🐍 model_comparison.py                # Model evaluation tool
+├── 🐍 verify_video.py                     # Video verification utility
+│
+├── 📁 docs/                              # Detailed documentation
+│   ├── README.md                         # Documentation index
+│   ├── PROJECT_EXPLANATION.md            # Complete technical explanation
+│   ├── QUICK_REFERENCE.md                # Quick reference guide
+│   └── ...                               # Additional documentation
+│
+└── 📦 vehicle_detection/                 # Core detection modules
+    ├── __init__.py
+    │
+    ├── 📁 models/                        # Vehicle detection module
+    │   ├── __init__.py
+    │   └── vehicle_detector.py           # YOLO11 vehicle detector
+    │
+    └── 📁 license_plate/                 # License plate detection module
+        ├── __init__.py
+        └── license_plate_detector.py     # CV-based plate detector
+```
+
+> 💡 **Note**: For detailed technical documentation, see the [docs/](docs/) folder.
+
+### Key Files Explained
+
+| File | Description |
+|------|-------------|
+| `run_detection.py` | Main script that orchestrates video processing, vehicle detection, and license plate detection |
+| `vehicle_detector.py` | Implements YOLO11-based vehicle detection with configurable model sizes |
+| `license_plate_detector.py` | Multi-method CV approach for license plate detection with strict validation |
+| `model_comparison.py` | Tool for comparing different YOLO model variants (YOLOv5, YOLOv8, YOLO11) |
+| `verify_video.py` | Utility to verify and preview the generated output video |
+
+---
+
+## 🔬 How It Works
+
+### Detection Pipeline
+
+```
+Input Video Frame
+    ↓
+[Stage 1: Vehicle Detection]
+    ├─→ YOLO11 Neural Network Inference
+    ├─→ Filter by Vehicle Classes (car, truck, bus, motorcycle)
+    └─→ Output: Bounding boxes with confidence scores
+    ↓
+[Stage 2: License Plate Detection]
+    For each detected vehicle:
+    ├─→ Crop vehicle region (ROI)
+    ├─→ Apply multiple CV methods:
+    │   ├─→ MSER (text region detection)
+    │   ├─→ Adaptive Thresholding (3 variants)
+    │   └─→ Canny Edge Detection
+    ├─→ Validate candidates:
+    │   ├─→ Aspect ratio (2.5:1 to 4.2:1)
+    │   ├─→ Size constraints (80x25 min, 50% max width)
+    │   ├─→ Contrast analysis (>25)
+    │   ├─→ Text structure validation (horizontal bands)
+    │   └─→ Position validation (centered, lower region)
+    └─→ Score and return best candidate
+    ↓
+Output: Annotated frame with vehicle and plate bounding boxes
+```
+
+### Key Algorithms
+
+1. **Vehicle Detection**: YOLO11 (You Only Look Once) - Single-stage object detector optimized for speed and accuracy
+2. **License Plate Detection**: Hybrid approach combining:
+   - **MSER**: Detects stable regions characteristic of text
+   - **Adaptive Thresholding**: Handles varying lighting conditions
+   - **Canny Edge Detection**: Identifies edge patterns in plate regions
+3. **Validation Pipeline**: Multi-stage filtering to reduce false positives by analyzing aspect ratio, size, contrast, text structure, and spatial positioning
+
+---
+
+## 📊 Performance
+
+- **Vehicle Detection**: ~30-60 FPS (depending on hardware and input resolution)
+- **License Plate Detection**: Optimized for accuracy with configurable speed/accuracy trade-offs
+- **Model Size**: YOLO11 Nano (~6MB) - lightweight and efficient
+- **Accuracy**: High precision with strict validation filters to minimize false positives
+
+---
+
+## 🎓 Academic Context
+
+This project was developed as part of a **5th-semester Computer Vision course**, demonstrating practical application of:
+- Deep learning for object detection
+- Traditional computer vision techniques
+- Video processing and analysis
+- Software engineering best practices
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Muhammad Humza Majeed**
+
+---
+
+## 🙏 Acknowledgments
+
+- **Ultralytics** for the YOLO11 implementation
+- **OpenCV** community for excellent computer vision tools
+- **PyTorch** team for the deep learning framework
+
+---
+
+<div align="center">
+
+**⭐ If you find this project helpful, please consider giving it a star!**
+
+Made using Python and Computer Vision
+
+</div>

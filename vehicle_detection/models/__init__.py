@@ -1,0 +1,2 @@
+"""Vehicle detection models"""
+
