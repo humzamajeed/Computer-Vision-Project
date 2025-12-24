@@ -12,24 +12,24 @@ import io
 # Fix for UnicodeEncodeError in some environments
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 80, fps: float = 0.5, scale: float = 0.35):
+def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 100, fps: float = 1.5, target_width: int = 800):
     """
-    Create a slow animated GIF from video
+    Create an animated GIF from video with README-appropriate width
     
     Args:
         video_path: Path to input video file
         output_path: Path to output GIF file
         max_frames: Maximum number of frames to include
-        fps: Frames per second for GIF (lower = slower)
-        scale: Scale factor for resizing (0.35 = 35% of original size)
+        fps: Frames per second for GIF (1.5 = slightly faster than slow)
+        target_width: Target width in pixels to match README width (default 800px)
     """
     if not Path(video_path).exists():
         print(f"❌ Error: Video file '{video_path}' not found!")
         return False
     
-    print(f"🎬 Creating slow GIF from: {video_path}")
+    print(f"🎬 Creating GIF from: {video_path}")
     print(f"   Target: {output_path}")
-    print(f"   Settings: {max_frames} frames, {fps} FPS, {scale*100:.0f}% scale")
+    print(f"   Settings: {max_frames} frames, {fps} FPS, target width: {target_width}px")
     print("   This may take a minute...\n")
     
     cap = cv2.VideoCapture(video_path)
@@ -42,6 +42,14 @@ def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 8
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     
+    # Calculate scale to match target width while maintaining aspect ratio
+    scale = target_width / width
+    new_width = target_width
+    new_height = int(height * scale)
+    
+    print(f"   Original: {width}x{height}")
+    print(f"   Scaled to: {new_width}x{new_height} (scale: {scale:.2f})")
+    
     # Calculate frame step to get max_frames evenly distributed
     frame_step = max(1, total_frames // max_frames)
     
@@ -49,7 +57,7 @@ def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 8
     frame_count = 0
     saved_count = 0
     
-    print("📸 Extracting frames...")
+    print("\n📸 Extracting frames...")
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -57,9 +65,7 @@ def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 8
         
         # Only save every Nth frame
         if frame_count % frame_step == 0 and saved_count < max_frames:
-            # Resize frame
-            new_width = int(width * scale)
-            new_height = int(height * scale)
+            # Resize frame to target width
             resized = cv2.resize(frame, (new_width, new_height), interpolation=cv2.INTER_AREA)
             
             # Convert BGR to RGB for imageio
@@ -80,12 +86,12 @@ def create_gif_from_video(video_path: str, output_path: str, max_frames: int = 8
     
     print(f"\n💾 Saving GIF: {output_path}")
     print(f"   Frames: {len(frames)}")
-    print(f"   FPS: {fps} (very slow for better visibility)")
+    print(f"   FPS: {fps} (slightly faster for better viewing)")
     print(f"   Resolution: {frames[0].shape[1]}x{frames[0].shape[0]}")
     print("   This may take a minute...")
     
-    # Calculate duration per frame (in seconds) for very slow playback
-    duration_per_frame = 1.0 / fps if fps > 0 else 2.0
+    # Calculate duration per frame (in seconds)
+    duration_per_frame = 1.0 / fps if fps > 0 else 0.67
     
     imageio.mimsave(
         output_path,
@@ -115,7 +121,7 @@ if __name__ == '__main__':
         print(f"❌ Error: Video file '{video_file}' not found!")
         print("Please run 'python run_detection.py' first to generate the video.")
     else:
-        # Create very slow GIF: 0.5 FPS (2 seconds per frame), 80 frames, 35% scale
-        # This should create a ~8-9MB GIF that plays very slowly
-        create_gif_from_video(video_file, output_file, max_frames=80, fps=0.5, scale=0.35)
+        # Create GIF: 1.5 FPS (faster), 55 frames, original width (464px - README-appropriate, under 10MB)
+        # This creates a GIF that matches README width with normal padding
+        create_gif_from_video(video_file, output_file, max_frames=55, fps=1.5, target_width=464)
 

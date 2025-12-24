@@ -29,7 +29,7 @@ This project implements an intelligent parking management system that leverages 
 
 ![Demo GIF](demo.gif)
 
-*Slow-motion GIF showing vehicle and license plate detection results*
+*Animated GIF showing vehicle and license plate detection results (464px width, optimized for README display)*
 
 </div>
 
