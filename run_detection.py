@@ -44,7 +44,7 @@ def main():
         vehicle_detector = create_detector('yolo11', 'n')  # Ultralytics YOLO11
         print("   - Initializing license plate detector (Detection Only - Maximum Accuracy)...")
         # Detection only - no OCR, maximum accuracy focus
-        plate_detector = LicensePlateDetector(plate_model='yolo11n', debug=True)
+        plate_detector = LicensePlateDetector(plate_model='yolo11n', debug=False)
         print("✅ All Ultralytics YOLO11 models loaded successfully!\n")
         print("📌 Using Ultralytics YOLO11 (Latest) for both vehicle and license plate detection\n")
     except Exception as e:
@@ -71,6 +71,12 @@ def main():
     print(f"   FPS: {fps}")
     print(f"   Total Frames: {total_frames}")
     print(f"   Duration: {total_frames/fps:.1f} seconds\n")
+    
+    # Setup video writer for saving output
+    output_video_file = "output_detection.mp4"
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(output_video_file, fourcc, fps, (width, height))
+    print(f"💾 Saving processed video to: {output_video_file}\n")
     
     frame_count = 0
     vehicle_count = 0
@@ -161,6 +167,9 @@ def main():
                        0.7, (255, 255, 255), 2)
             cv2.putText(frame, "Green = Vehicle | Blue = License Plate", (10, height - 20), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+            
+            # Write frame to output video
+            out.write(frame)
         
         # Display frame
         cv2.imshow('Vehicle & License Plate Detection', frame)
@@ -175,8 +184,10 @@ def main():
             print(status)
     
     # Cleanup
+    out.release()
     cap.release()
     cv2.destroyAllWindows()
+    print(f"\n💾 Video saved successfully: {output_video_file}")
     
     # Print summary
     print("\n" + "=" * 60)

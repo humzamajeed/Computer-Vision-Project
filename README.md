@@ -29,15 +29,17 @@ This project implements an intelligent parking management system that leverages 
 
 ![Demo GIF](demo.gif)
 
+*Slow-motion GIF showing vehicle and license plate detection results*
+
 </div>
 
 ### 📹 Full Output Video
 
 <div align="center">
 
-**[📥 Download/View Full Detection Output Video](output_detection.mp4)**
+**[🎬 Watch on YouTube](https://youtube.com/shorts/lVSzGinErlw)** | **[📥 Download Video](output_detection.mp4)**
 
-*Click the link above to view the complete processed video with vehicle and license plate detections*
+*Click the YouTube link to watch the full processed video, or download the MP4 file directly*
 
 </div>
 
@@ -163,6 +165,7 @@ parking-management-system-using-CV/
 │
 ├── 🐍 run_detection.py                   # Main execution script
 ├── 🐍 model_comparison.py                # Model evaluation tool
+├── 🐍 create_gif.py                      # Utility to create demo GIF from output video
 │
 └── 📦 vehicle_detection/                 # Core detection modules
     ├── __init__.py
@@ -181,10 +184,11 @@ parking-management-system-using-CV/
 
 | File | Description |
 |------|-------------|
-| `run_detection.py` | Main script that orchestrates video processing, vehicle detection, and license plate detection |
+| `run_detection.py` | Main script that orchestrates video processing, vehicle detection, and license plate detection. Saves output to `output_detection.mp4` |
 | `vehicle_detector.py` | Implements YOLO11-based vehicle detection with configurable model sizes |
 | `license_plate_detector.py` | Multi-method CV approach for license plate detection with strict validation |
 | `model_comparison.py` | Tool for comparing different YOLO model variants (YOLOv5, YOLOv8, YOLO11) |
+| `create_gif.py` | Utility script to create slow-motion demo GIF from `output_detection.mp4` for README display |
 
 ---
 

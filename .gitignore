@@ -58,9 +58,9 @@ debug_plates/
 !demo.gif  # Keep demo GIF for README
 
 # Utility scripts (not core functionality)
-create_gif.py
 create_documentation.py
 *.docx
+# Note: create_gif.py is now part of the workflow
 
 # Results and logs
 results/
