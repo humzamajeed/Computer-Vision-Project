@@ -46,6 +46,8 @@ ENV/
 *.mkv
 # Exclude input video files (too large for git)
 Car in parking Garage - Parking garage security camera system.mp4
+# Allow output detection video for README
+!output_detection.mp4
 
 # Debug outputs
 debug_plates/

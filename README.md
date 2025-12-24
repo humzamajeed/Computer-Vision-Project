@@ -31,6 +31,16 @@ This project implements an intelligent parking management system that leverages 
 
 </div>
 
+### 📹 Full Output Video
+
+<div align="center">
+
+**[📥 Download/View Full Detection Output Video](output_detection.mp4)**
+
+*Click the link above to view the complete processed video with vehicle and license plate detections*
+
+</div>
+
 **Demo Description:**
 
 This video demonstrates the system processing a parking garage security camera feed. The detection pipeline works in two stages:
@@ -149,6 +159,7 @@ parking-management-system-using-CV/
 ├── 📄 requirements.txt                   # Python dependencies
 │
 ├── 🎬 demo.gif                          # Animated demo GIF (for README)
+├── 🎥 output_detection.mp4              # Full processed output video
 │
 ├── 🐍 run_detection.py                   # Main execution script
 ├── 🐍 model_comparison.py                # Model evaluation tool
