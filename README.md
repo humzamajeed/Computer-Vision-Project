@@ -148,7 +148,7 @@ parking-management-system-using-CV/
 ├── 📄 README.md                          # Project documentation
 ├── 📄 requirements.txt                   # Python dependencies
 │
-├── 🎬 output_detection.mp4              # Demo video output
+├── 🎬 demo.gif                          # Animated demo GIF (for README)
 │
 ├── 🐍 run_detection.py                   # Main execution script
 ├── 🐍 model_comparison.py                # Model evaluation tool
