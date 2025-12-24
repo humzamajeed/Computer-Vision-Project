@@ -117,7 +117,6 @@ pip install -r requirements.txt
    - Press `p` to pause/resume processing
 
 4. **Output**:
-   - Processed video saved as `output_detection.mp4`
    - Real-time display window with detection results
 
 ### Advanced Usage

@@ -11,7 +11,7 @@ from vehicle_detection.license_plate.license_plate_detector import LicensePlateD
 
 def main():
     # Video file name
-    video_file = "Car in parking Garage - Parking garage security camera system.mp4"
+    video_file = "parking video.mp4"
     
     # Check if video exists
     if not Path(video_file).exists():
@@ -71,12 +71,6 @@ def main():
     print(f"   FPS: {fps}")
     print(f"   Total Frames: {total_frames}")
     print(f"   Duration: {total_frames/fps:.1f} seconds\n")
-    
-    # Setup video writer to save processed video
-    output_video_file = "output_detection.mp4"
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Codec for MP4
-    out = cv2.VideoWriter(output_video_file, fourcc, fps, (width, height))
-    print(f"💾 Saving processed video to: {output_video_file}\n")
     
     frame_count = 0
     vehicle_count = 0
@@ -168,9 +162,6 @@ def main():
             cv2.putText(frame, "Green = Vehicle | Blue = License Plate", (10, height - 20), 
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
         
-        # Write frame to output video
-        out.write(frame)
-        
         # Display frame
         cv2.imshow('Vehicle & License Plate Detection', frame)
         
@@ -185,7 +176,6 @@ def main():
     
     # Cleanup
     cap.release()
-    out.release()  # Release video writer
     cv2.destroyAllWindows()
     
     # Print summary
@@ -194,7 +184,6 @@ def main():
     print(f"   Total Frames Processed: {frame_count}")
     print(f"   Total Vehicles Detected: {vehicle_count}")
     print(f"   Total License Plates Found: {plate_count}")
-    print(f"   ✅ Processed video saved to: {output_video_file}")
     print("=" * 60)
 
 if __name__ == '__main__':
